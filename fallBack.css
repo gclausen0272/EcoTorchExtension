@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(25, 71, 87) !important;
+}
+
+:any-link {
+  color: rgb(0,137,218) !important;
+}
+@font-face {
+}
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+  cursor: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Mano_cursor.svg/1200px-Mano_cursor.svg.png"), auto !important;
+}* {
+  cursor: url("https://www.freeiconspng.com/thumbs/cursor-png/white-mouse-cursor-arrow-by-qubodup-11.png"), auto !important;
+}
+#wm-ipp-base{
+  display: 'none' !important;
+  visibility:hidden;
+  height:0
+}
+
+/*
+chrome.runtime.getURL("assets/cursor.png")
+chrome.runtime.getURL("assets/hand.png")
+*/
