@@ -1,7 +1,12 @@
 body {
     background-color: rgb(25, 71, 87) !important;
-}
+    height: 500px;
+    width: 250px;
 
+}
+#bod{
+  background-color:antiquewhite;
+}
 :any-link {
   color: rgb(0,137,218) !important;
 }

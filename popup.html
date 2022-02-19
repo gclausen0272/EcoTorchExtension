@@ -5,10 +5,23 @@
     <link rel="stylesheet" type="text/css" href="fallBack.css">
 </head>
   <body>
-    <button id="changeColor"></button>
-    <button id="back" >Read Selection</button>
-    <button id="stop" >Stop Reading</button>
+    <h1>EcoTorch </h1>
+    <div id="bod">
+      <label for="cars">Choose a model:</label>
+      <select name="cars" id="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+      <br><br>
+      <label for="quantity">Epochs (between 1 and 1000):</label>
+      <input type="number" id="quantity" name="quantity" min="1" max="1000">
 
+      <button id="changeColor"></button>
+      <button id="back" >Read Selection</button>
+      <button id="stop" >Stop Reading</button>
+    </div>
     <script src="popup.js"></script>
 
 

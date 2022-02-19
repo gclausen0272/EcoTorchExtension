@@ -4,7 +4,6 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.sync.set({ color });
   console.log('Default background color set to %cgreen', `color: ${color}`);
 });
-// var urlRegex = /^https?:\/\/(?:[^./?#]+\.)?stackoverflow\.com/;
 
 // A function to use as callback
 function doStuffWithDom(domContent) {
@@ -32,7 +31,7 @@ chrome.runtime.onMessage.addListener((request, sender, reply) => {
         console.log(activeTab)})
     console.log(request)
     if(request[0]==0){
-    chrome.tts.speak(request[1]);
+        chrome.tts.speak(request[1]);
     }
    else if(request[0] ==1){
         chrome.tts.stop()
