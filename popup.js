@@ -16,7 +16,8 @@ chrome.runtime.onMessage.addListener( async function (response, sendResponse) {
     r = response
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      function: replace(response),
+      function: replace,
+      args:[response]
     });
 
 });
@@ -58,22 +59,6 @@ stopTime.addEventListener("click", async () => {
   });
 });
 
-// // This function is sending information to the background service worker with an async request: we will need to do something similar
-// function setPageBackgroundColor() {
-//   chrome.storage.sync.get("color", ({ color }) => {
-//       var j  = document.getSelection()
-//     let resp2 = [2,j.toString()]
-//     chrome.runtime.sendMessage(resp2, function (response) {});
-
-//       document.getSelection().getRangeAt(0).deleteContents()
-//         let newNode = document.createElement('u');
-//         newNode.innerHTML = "Spell Check In Progress";
-//         document.getSelection().getRangeAt(0).insertNode(newNode);
-//         let resp = [0,j.toString()]
-//         chrome.runtime.sendMessage(resp, (response) => {console.log("hello wolrd "+ response.message) });
-//   });
-// }
-
 
  function back(modelType, epochs) {
    console.log(modelType, epochs)
@@ -84,11 +69,8 @@ stopTime.addEventListener("click", async () => {
       chrome.runtime.sendMessage(resp, function (response) {});
 
   }
-  function stop() {
-    console.log("button clicked! ");
-     
+  function stop() {   
         let resp = [1,""]
-
       chrome.runtime.sendMessage(resp, function (response) {});
 
   }
