@@ -77,14 +77,14 @@ stopTime.addEventListener("click", async () => {
 
  function back(modelType,classNum, epochs, maxLen, hei, wid) {
         var j  = document.getSelection()  
-        var parsedCode = j.toString().replaceAll(" ","<space>").split("\n")
+        var parsedCode = j.toString().replaceAll(" ","-space-").split("\n")
         console.log(modelType, classNum, epochs, maxLen, hei, wid)
         let inputs = [] 
         if(modelType == "imageClass"){
-          inputs = [j.toString(), modelType, epochs,parsedCode, hei,wid ]
+          inputs = [parsedCode, classNum, epochs,modelType, hei,wid ]
         }
         else{
-          inputs = [j.toString(), modelType, epochs,parsedCode, maxLen ]
+          inputs = [parsedCode, classNum, epochs,modelType, maxLen ]
         }
         // let resp = [0,j.toString(), modelType, epochs, parsedCode]
       chrome.runtime.sendMessage(inputs, function (response) {});
