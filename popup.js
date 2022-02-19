@@ -77,8 +77,8 @@ stopTime.addEventListener("click", async () => {
 
  function back(modelType,classNum, epochs, maxLen, hei, wid) {
         var j  = document.getSelection()  
-        var parsedCode = j.toString().replaceAll(" ","-space-").split("\n")
-        console.log(modelType, classNum, epochs, maxLen, hei, wid)
+        var parsedCode = j.toString()
+        console.log(parsedCode,modelType, classNum, epochs, maxLen, hei, wid)
         let inputs = [] 
         if(modelType == "imageClass"){
           inputs = [parsedCode, classNum, epochs,modelType, hei,wid ]

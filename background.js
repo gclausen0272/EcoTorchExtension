@@ -3,6 +3,8 @@ function selection(){
     if (window.getSelection)
            return window.getSelection();
     }
+
+
     const userAction2 = async (request) => {
         var realUrl = 'https://eco-torch.herokuapp.com/api/v1/text?epochs=' + request [2] +'&class=' + request[1] +'&maxlen=' + request[4]
        console.log(realUrl)
@@ -15,39 +17,34 @@ function selection(){
     }
     
     const userAction3 = async (request) => {
-
-        //will need to update the parameters 
-        // https://eco-torch.herokuapp.com/api/v1/text?code=dummycode&epochs=2&class=c&maxlen=1
-
-        //https://eco-torch.herokuapp.com/api/v1/image?code=dummycode&epochs=2&class=c&height=1&width=2
         var realUrl = 'https://eco-torch.herokuapp.com/api/v1/image?epochs=' + request [2] +'&class=' + request[1] +'&height=' + request[4]+"&width="+request[5]
         console.log(realUrl)
         const response = await fetch(realUrl, {method: 'POST' ,body: request[0]});
 
         const bodyJson = await response.json();
         console.log(bodyJson)
-        
-        reply({message: bodyJson});
         return bodyJson
     }
+
+
     //this takes the function call from the popup, where the api call will live 
 chrome.runtime.onMessage.addListener((request, sender, reply) => {
     console.log("hit")
-    const userAction = async (request) => {
+    // const userAction = async (request) => {
 
-        //will need to update the parameters 
-        // https://eco-torch.herokuapp.com/api/v1/text?code=dummycode&epochs=2&class=c&maxlen=1
+    //     //will need to update the parameters 
+    //     // https://eco-torch.herokuapp.com/api/v1/text?code=dummycode&epochs=2&class=c&maxlen=1
 
-        //https://eco-torch.herokuapp.com/api/v1/image?code=dummycode&epochs=2&class=c&height=1&width=2
-        var realUrl = "https://eco-torch.herokuapp.com/api/v1/torch?paramName=" + pj
-        const response = await fetch(realUrl);
-        console.log(response)
-        const bodyJson = await response.json();
-        console.log(bodyJson)
+    //     //https://eco-torch.herokuapp.com/api/v1/image?code=dummycode&epochs=2&class=c&height=1&width=2
+    //     var realUrl = "https://eco-torch.herokuapp.com/api/v1/torch?paramName=" + pj
+    //     const response = await fetch(realUrl);
+    //     console.log(response)
+    //     const bodyJson = await response.json();
+    //     console.log(bodyJson)
         
-        reply({message: bodyJson});
-        return bodyJson;
-    }
+    //     reply({message: bodyJson});
+    //     return bodyJson;
+    // }
 
     //temp answer function to test popup/ service worker connection  && variable handoff 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -56,11 +53,13 @@ chrome.runtime.onMessage.addListener((request, sender, reply) => {
         console.log(request[3])
         if(request[3].toString() == 'textClass'){
             console.log("text ")
+            chrome.tts.speak(request[0]);  
+
             console.log(request.toString())
             chrome.tts.speak(request.toString())
             userAction2(request);
         }
-        else{
+        else if (request[3].toString() == "imageClass"){
             console.log("image ")
             console.log(request.toString())
             chrome.tts.speak(request[0]);  
