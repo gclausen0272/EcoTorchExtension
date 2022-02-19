@@ -24,24 +24,34 @@ chrome.runtime.onMessage.addListener((request, sender, reply) => {
         var activeTab = tabs[0];
         console.log(activeTab)})
         console.log(request)
-    if(request[0]==0){
-        chrome.tts.speak(request[1]);
-    }
-   else if(request[0] ==1){
-        chrome.tts.stop()
-    }
-    else{
-        (async () => {
-            console.log("await")
-            var j = await userAction(request[1])
-            console.log(j)
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        if(request.Length == 5){
+            console.log("text ")
+            console.log(request.toString())
+            chrome.tts.speak(request[0]);
+        }
+        else{
+            console.log("image ")
+            console.log(request.toString())
+            chrome.tts.speak(request[0]);    
+        }
+//     if(request[0]==0){
+//         chrome.tts.speak(request[1]);
+//     }
+//    else if(request[0] ==1){
+//         chrome.tts.stop()
+//     }
+//     else{
+//         (async () => {
+//             console.log("await")
+//             var j = await userAction(request[1])
+//             console.log(j)
+//             chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 
-                chrome.tabs.sendMessage(tabs[0].id,j); 
-            });
-            return j
-        })()
-    }
+//                 chrome.tabs.sendMessage(tabs[0].id,j); 
+//             });
+//             return j
+//         })()
+//     }
 
 });
 

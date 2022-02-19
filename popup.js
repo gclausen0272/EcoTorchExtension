@@ -2,6 +2,7 @@
 let changeColor = document.getElementById("changeColor");
 let read = document.getElementById("back")
 let stopTime = document.getElementById("stop")
+let sel = document.getElementById("modelType")
 let r = ""
 let slip = " "
 
@@ -21,6 +22,7 @@ chrome.runtime.onMessage.addListener( async function (response, sendResponse) {
 
 });
 
+
 //commented out code is an example of how injection of a response can work 
 function replace(response){
     //    console.log(response);
@@ -31,13 +33,36 @@ function replace(response){
 }
 
 
+sel.addEventListener("click", async () => {
+  let currentMode = document.getElementById("modelType").value.toString(); 
+  if (currentMode =="imageClass"){
+      setImageVis();
+      setTextInvis();
+    }
+  else if (currentMode=="textClass"){
+    setTextVis();
+    setImageInvis();
+  }
+  else{
+    setTextInvis();
+    setImageInvis();
+  }
+
+  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: runcheck,
+  });
+
+})
 read.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: back,
-    args: [document.getElementById("cars").value.toString(), document.getElementById("quantity").value.toString()]
+    args: [document.getElementById("modelType").value.toString(), document.getElementById("classNum").value.toString(), document.getElementById("quantity").value.toString(), document.getElementById("maxLen").value.toString(), document.getElementById("hei").value.toString(), document.getElementById("wid").value.toString() ]
   });
 });
 
@@ -50,11 +75,19 @@ stopTime.addEventListener("click", async () => {
   });
 });
 
- function back(modelType, epochs) {
+ function back(modelType,classNum, epochs, maxLen, hei, wid) {
         var j  = document.getSelection()  
         var parsedCode = j.toString().replaceAll(" ","<space>").split("\n")
-        let resp = [0,j.toString(), modelType, epochs, parsedCode]
-      chrome.runtime.sendMessage(resp, function (response) {});
+        console.log(modelType, classNum, epochs, maxLen, hei, wid)
+        let inputs = [] 
+        if(modelType == "imageClass"){
+          inputs = [j.toString(), modelType, epochs,parsedCode, hei,wid ]
+        }
+        else{
+          inputs = [j.toString(), modelType, epochs,parsedCode, maxLen ]
+        }
+        // let resp = [0,j.toString(), modelType, epochs, parsedCode]
+      chrome.runtime.sendMessage(inputs, function (response) {});
 
   }
   function stop() {     
@@ -63,4 +96,19 @@ stopTime.addEventListener("click", async () => {
       chrome.runtime.sendMessage(resp, function (response) {});
 
   }
+function runcheck(){
+  // console.log("hello world")
+}
+function setImageVis(){
+  document.getElementById('imageC').style.display = 'block';
+}
+function setImageInvis(){
+  document.getElementById('imageC').style.display = 'none';
+}
   
+function setTextVis(){
+  document.getElementById('textC').style.display = 'block';
+}
+function setTextInvis(){
+  document.getElementById('textC').style.display = 'none';
+}

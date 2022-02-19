@@ -2,6 +2,8 @@ body {
     background-color: rgb(25, 71, 87) !important;
     height: 500px;
     width: 250px;
+    background-image: url("https://i.pinimg.com/originals/cf/e3/8d/cfe38d2d6817aa4c28856387feb4369b.jpg");
+    background-size: cover;
 
 }
 #bod{
