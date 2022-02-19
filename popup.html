@@ -7,6 +7,7 @@
   <body>
     <h1>EcoTorch </h1>
     <div id="bod">
+      <br><br>
       <label for="modelType">Choose a model:</label>
       <select name="modelType" id="modelType">
         <option value="textClass">Text Classification</option>
@@ -25,7 +26,7 @@
         <br><br>
       </div>
 
-      <div id = "textC"  style="display: none;">
+      <div id = "textC"  style="display: block;">
         <br> 
         <label for="maxLen" id="maxLenLabel">Max Length: </label>
         <input type="number" id="maxLen" name="maxLen" min="1" max="1000">
@@ -34,9 +35,12 @@
 
       <label for="quantity" >Number of Classes:</label>
       <input type="number" id = "classNum" name="quantity" min="1" max="1000">
-
-      <button id="back" >Read Selection</button>
-      <button id="stop" >Stop Reading</button>
+        <br> <br> <br>
+        <center>
+      <button id="back" style = "border-radius: 12px;">What's my impact?</button>
+      </center>
+      <br> <br>
+      <button id="stop" style="display: none;" >What's my impact?</button>
     </div>
     <script src="popup.js"></script>
 

@@ -6,20 +6,35 @@ body {
     background-size: cover;
 
 }
+
+#modelType:hover{
+  cursor: pointer;
+}
+#back{
+  background-color: rgba(255, 255, 255, 0.521);
+  color: black;
+  border: 2px solid #4CAF50; /* Green */
+  width: 200px;
+}
+#back:hover {
+  background-color: #4CAF50; /* Green */
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 #bod{
-  background-color:antiquewhite;
+  background-color:rgba(250, 235, 215, 0.603);
 }
 :any-link {
   color: rgb(0,137,218) !important;
 }
-@font-face {
-}
 
+/* 
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
   cursor: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Mano_cursor.svg/1200px-Mano_cursor.svg.png"), auto !important;
 }* {
   cursor: url("https://www.freeiconspng.com/thumbs/cursor-png/white-mouse-cursor-arrow-by-qubodup-11.png"), auto !important;
-}
+} */
 #wm-ipp-base{
   display: 'none' !important;
   visibility:hidden;
