@@ -16,29 +16,20 @@ chrome.runtime.onMessage.addListener( async function (response, sendResponse) {
     r = response
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      function: replace,
-      args:[response]
+      function: replace(response),
     });
 
 });
 
+//commented out code is an example of how injection of a response can work 
 function replace(response){
-       console.log(response);
-    document.getSelection().getRangeAt(0).deleteContents()
-    let newNode = document.createElement('u');
-    newNode.innerHTML = response;
-    document.getSelection().getRangeAt(0).insertNode(newNode); 
+    //    console.log(response);
+    // document.getSelection().getRangeAt(0).deleteContents()
+    // let newNode = document.createElement('u');
+    // newNode.innerHTML = response;
+    // document.getSelection().getRangeAt(0).insertNode(newNode); 
 }
-// When the button is clicked, inject etPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-    console.log("hi")
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: setPageBackgroundColor,
-  });
-});
 
 read.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -59,18 +50,16 @@ stopTime.addEventListener("click", async () => {
   });
 });
 
-
  function back(modelType, epochs) {
-   console.log(modelType, epochs)
-    console.log("button clicked! ");
         var j  = document.getSelection()  
         var parsedCode = j.toString().replaceAll(" ","<space>").split("\n")
         let resp = [0,j.toString(), modelType, epochs, parsedCode]
       chrome.runtime.sendMessage(resp, function (response) {});
 
   }
-  function stop() {   
+  function stop() {     
         let resp = [1,""]
+
       chrome.runtime.sendMessage(resp, function (response) {});
 
   }
