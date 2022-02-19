@@ -1,9 +1,10 @@
-// Initialize butotn with users's prefered color
+// Initialize button with users's prefered color
 let changeColor = document.getElementById("changeColor");
 let read = document.getElementById("back")
 let stopTime = document.getElementById("stop")
 let r = ""
 let slip = " "
+let report = document.getElementById("report_link")
 
 
 chrome.storage.sync.get("color", ({ color }) => {
@@ -56,6 +57,11 @@ stopTime.addEventListener("click", async () => {
     target: { tabId: tab.id },
     function: stop,
   });
+});
+
+report.addEventListener("click", async () => {
+  console.log("get to report")
+  chrome.tabs.create({url: "report.html"});
 });
 
 // // This function is sending information to the background service worker with an async request: we will need to do something similar
