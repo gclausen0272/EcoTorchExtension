@@ -5,6 +5,56 @@
   <script type="text/javascript" src="data.json"></script>
 </head>
 
+<style>
+  /* .datalist{
+    display: flex;
+    justify-content: space-between;
+    color: red;
+    width: 50%;
+  }
+
+  .uislider
+  .slidecontainer {
+    width: 100%;
+  } */
+
+  .slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 25px;
+    border-radius: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+
+  .slider:hover {
+    opacity: 1;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+
+</style>
+
+
 <title>EcoTorch</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -95,17 +145,14 @@ and is wrapped around the whole page content, except for the footer in this exam
     
       <!-- Placeholder for sliders-->
       <p style="font-size: larger;">Power Consumption on Alternative Devices:</p>
-      <!-- <p id="emissions"></p> -->
       <div class="value">10</div>
-      <input type="range" min="0" max="10" step="1" value="10" id="myRange" list="tickmarks">
+      
+      <input class="slider" type="range" min="0" max="10" step="1" value="10" id="myRange" list="tickmarks">
+
       <datalist id="tickmarks">
-        <option><p id="devA"></p></option>
+        <option label="A"><p id="devA"></p></option>
         <option><p id="devB"></p></option>
         <option><p id="devC"></p></option>
-
-        <!-- <option value="3" label="devA">devA</option>
-        <option value="6" label="devA"></option>
-        <option value="9" label="devA"></option> -->
       </datalist>
       <br>
     </div>
