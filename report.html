@@ -2,22 +2,9 @@
 <html>
 
 <head>
-  <script src="report.js"></script>
   <script type="text/javascript" src="data.json"></script>
 </head>
 
-<style>
-  body {
-    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
-    position: relative;
-    vertical-align:middle;
-    /* background-image: url(/icons/TreeHacksCoverPhoto.png); */
-    background-color: paleturquoise;
-
-    background-size: 100% 100%;
-  }
-</style >
 
 <body>
 
@@ -40,17 +27,8 @@
   <p id="duration"></p>
 
   <!-- Placeholder for sliders to filter models/suggestions -->
-  <div class="slidercontainer">
-    <input type="range" min="0" max="100" value="100" step="25" list="steplist">
-    <datalist id = "steplist">
-      <option>0</option>
-      <option>25</option>
-      <option>50</option>
-      <option>75</option>
-      <option>100</option>
-    </datalist>
-  </div>
-  <p>Value: <span id="demo"></span></p>
+  <div class="value">0</div>
+  <input type="range" min="0" max="10" step="1" value="0" id="myRange">
 
   <!-- <div class="slidecontainer">
     <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
@@ -77,5 +55,6 @@
   </button>
 </div>
 
+<script src="report.js"></script>
 </body>
 </html>

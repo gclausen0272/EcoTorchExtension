@@ -1,14 +1,17 @@
 // let suggestion = document.getElementById("suggestion");
 // let reset = document.getElementById("reset")
 
-// var slider = document.getElementById("myRange");
-// var output = document.getElementById("demo");
-// var step = document.getElementById("new")
-// output.innerHTML = step.value;
+// var elem = document.querySelector('input[type="range"]');
+var elem = document.getElementById("myRange")
 
-// step.oninput = function() {
-//   output.innerHTML = this.value;
-// }
+var rangeValue = function(){
+  var newValue = elem.value;
+  var target = document.querySelector('.value');
+  target.innerHTML = newValue;
+}
+
+elem.addEventListener("input", rangeValue);
+
 
 function load_data(){
   var mydata = JSON.parse(data);
