@@ -12,7 +12,9 @@ function selection(){
 
         const bodyJson = await response.json();
         console.log(bodyJson)
-        
+
+        chrome.tabs.create({ url: "/report.html" });
+
         return bodyJson
     }
     
@@ -20,8 +22,9 @@ function selection(){
         var realUrl = 'https://eco-torch.herokuapp.com/api/v1/image?epochs=' + request [2] +'&class=' + request[1] +'&height=' + request[4]+"&width="+request[5]+"&sample="+request[6]
         console.log(realUrl)
         const response = await fetch(realUrl, {method: 'POST' ,body: request[0]});
-
         const bodyJson = await response.json();
+        chrome.tabs.create({ url: "/report.html" });
+
         console.log(bodyJson)
         return bodyJson
     }
