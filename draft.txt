@@ -1,9 +1,25 @@
 <!DOCTYPE html>
+<head>
+<script src = "report.js"></script>
+<script type="text/javascript" src="data.json"></script>
+
+</head>
+<html>
+<body>
+
+<h1 id = "header">Hello World!</h1>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
 <html>
 
 <head>
   <script src="report.js"></script>
-  <script type="text/javascript" src="data.json"></script>
+  <script type="text/javascript" src="test.json"></script>
 </head>
 
 <!-- <style>
@@ -17,7 +33,7 @@
   }
 </style > -->
 
-<body>
+<body onload="load_data()">
 
 <div style="text-align: center;">
   <h1 style="font-size: xx-large;">Report</h1>
@@ -25,7 +41,7 @@
   <p style="font-size: larger;">Carbon Emission</p>
 
   <!-- <body onload="load_data()"> -->
-  <p id="emissions"></p>
+    <p id="emissions"></p>
   <!-- </body> -->
 
 

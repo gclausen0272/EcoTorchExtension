@@ -1,4 +1,4 @@
-{
- "emissions": 500,
- "duration":30
-}
+data = '[{
+ "emissions": "500",
+ "duration": "30"
+}]'
