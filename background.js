@@ -6,7 +6,7 @@ function selection(){
 
 
     const userAction2 = async (request) => {
-        var realUrl = 'https://eco-torch.herokuapp.com/api/v1/text?epochs=' + request [2] +'&class=' + request[1] +'&maxlen=' + request[4] + "&sample="+request[5]
+        var realUrl = 'http://localhost:5000/api/v1/text?epochs=' + request [2] +'&class=' + request[1] +'&maxlen=' + request[4] + "&sample="+request[5]
        console.log(realUrl)
         const response = await fetch(realUrl, {method: 'POST' ,body: request[0]});
 
@@ -19,7 +19,7 @@ function selection(){
     }
     
     const userAction3 = async (request) => {
-        var realUrl = 'https://eco-torch.herokuapp.com/api/v1/image?epochs=' + request [2] +'&class=' + request[1] +'&height=' + request[4]+"&width="+request[5]+"&sample="+request[6]
+        var realUrl = 'http://localhost:5000/api/v1/image?epochs=' + request [2] +'&class=' + request[1] +'&height=' + request[4]+"&width="+request[5]+"&sample="+request[6]
         console.log(realUrl)
         const response = await fetch(realUrl, {method: 'POST' ,body: request[0]});
         const bodyJson = await response.json();
