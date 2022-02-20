@@ -6,54 +6,10 @@
 </head>
 
 <style>
-  /* .datalist{
-    display: flex;
-    justify-content: space-between;
-    color: red;
-    width: 50%;
+  table, th, td {
+    border:1px solid black;
   }
-
-  .uislider
-  .slidecontainer {
-    width: 100%;
-  } */
-
-  .slider {
-    -webkit-appearance: none;
-    width: 50%;
-    height: 25px;
-    border-radius: 10px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-
-  .slider:hover {
-    opacity: 1;
-  }
-
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #04AA6D;
-    cursor: pointer;
-  }
-
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #04AA6D;
-    cursor: pointer;
-  }
-
 </style>
-
 
 <title>EcoTorch</title>
 <meta charset="UTF-8">
@@ -125,38 +81,48 @@ and is wrapped around the whole page content, except for the footer in this exam
 <br>
 
 <div class="w3-card-4 w3-margin w3-white" style="opacity: 0.8; border-radius: 20px;">
-  <div class="w3-container" style="text-align: center;">
+  <div class="w3-container" style="text-align: left;">
     <h3><b>Report</b></h3>
   </div>
   <br>
 
   <div class="w3-container">
-    <div style="text-align: center;">
+    <div style="text-align: left;">
   
       <p style="font-size: larger;">
-        Durations (durations of one epochs * number of epochs):
+        <li>Duration (duration of one epochs * the number of epochs):
+        <span id="duration"></span></li>
       </p>
-      <p id="duration"></p>
       <br>
-    
-      <p style="font-size: larger;">Power Consumption on Current Device:</p>
-      <p id="emissions"></p>
-      <br>
-    
-      <!-- Placeholder for sliders-->
-      <p style="font-size: larger;">Power Consumption on Alternative Devices:</p>
-      <div class="value">10</div>
-      
-      <input class="slider" type="range" min="0" max="10" step="1" value="10" id="myRange" list="tickmarks">
+      <p style="font-size: larger;">
+        <li>Power Consumption on the Current Device:
+        <span id="emissions"></span></li>
+      </p>
+      <br>    
+      <p style="font-size: larger;"><li>Power Consumption on Alternative Devices:</li></p>
 
-      <datalist id="tickmarks">
-        <option label="A"><p id="devA"></p></option>
-        <option><p id="devB"></p></option>
-        <option><p id="devC"></p></option>
-      </datalist>
+      <table style="width:100%">
+        <tr>
+          <th>Device</th>
+          <th>Consumption</th>
+        </tr>
+        <tr>
+          <td>Device A    </td>
+          <td><span id="devA"></span></td>
+        </tr>
+        <tr>
+          <td>Device B     </td>
+          <td><span id="devB"></span></td>
+        </tr>
+        <tr>
+          <td>Device     C</td>
+          <td><span id="devC"></span></td>
+        </tr>
+      </table>
+
       <br>
     </div>
-    
+
 </div>
 
 
