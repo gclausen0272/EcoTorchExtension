@@ -4,24 +4,54 @@
       
     <link rel="stylesheet" type="text/css" href="fallBack.css">
 </head>
+
   <body>
     <h1>EcoTorch </h1>
     <div id="bod">
-      <label for="cars">Choose a model:</label>
-      <select name="cars" id="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
+      <br><br>
+      <label for="modelType">Choose a model:</label>
+      <select name="modelType" id="modelType">
+        <option value="textClass">Text Classification</option>
+        <option value="imageClass">Image Classification</option>
+        <!-- <option value="tree">XGBoost</option> -->
       </select>
       <br><br>
       <label for="quantity">Epochs (between 1 and 1000):</label>
       <input type="number" id="quantity" name="quantity" min="1" max="1000">
+      <div id = "imageC"  style="display: none;">
+        <br> 
+        <label for="height" id="heightLabel">Height: </label>
+        <input type="number" id="hei" name="hei" min="1" max="1000">
+        <label for="wid" id="widLabel" >Width: </label>
+        <input type="number" id="wid" name="wid" min="1" max="1000">
+        <br><br>
+      </div>
 
-      <button id="changeColor"></button>
-      <button id="back" >Read Selection</button>
-      <button id="stop" >Stop Reading</button>
+      <div id = "textC"  style="display: block;">
+        <br> 
+        <label for="maxLen" id="maxLenLabel">Max Length: </label>
+        <input type="number" id="maxLen" name="maxLen" min="1" max="1000">
+        <br><br>
+      </div>
+
+
+      <div id = "sampleNumber"  style="display: block;">
+        <br> 
+        <label for="sample" id="sampleNumberLabel">Number of Samples: </label>
+        <input type="number" id="sample" name="sample" min="1" max="1000">
+        <br><br>
+      </div>
+
+      <label for="quantity" >Number of Classes:</label>
+      <input type="number" id = "classNum" name="quantity" min="1" max="1000">
+        <br> <br> <br>
+        <center>
+        <button id="back" style = "border-radius: 12px;">What's my impact?</button>
+        </center>
+        <br> <br>
+        <button id="stop" style="display: none;" >What's my impact?</button>
     </div>
+  
     <button id="report_link">
         View Report
     </button>
@@ -30,6 +60,7 @@
 
 
   </body>
+
 </html>
 
 

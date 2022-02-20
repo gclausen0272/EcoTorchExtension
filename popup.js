@@ -2,6 +2,7 @@
 let changeColor = document.getElementById("changeColor");
 let read = document.getElementById("back")
 let stopTime = document.getElementById("stop")
+let sel = document.getElementById("modelType")
 let r = ""
 let slip = " "
 let report = document.getElementById("report_link")
@@ -22,31 +23,47 @@ chrome.runtime.onMessage.addListener( async function (response, sendResponse) {
 
 });
 
+
+//commented out code is an example of how injection of a response can work 
 function replace(response){
-       console.log(response);
-    document.getSelection().getRangeAt(0).deleteContents()
-    let newNode = document.createElement('u');
-    newNode.innerHTML = response;
-    document.getSelection().getRangeAt(0).insertNode(newNode); 
+    //    console.log(response);
+    // document.getSelection().getRangeAt(0).deleteContents()
+    // let newNode = document.createElement('u');
+    // newNode.innerHTML = response;
+    // document.getSelection().getRangeAt(0).insertNode(newNode); 
 }
-// When the button is clicked, inject etPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-    console.log("hi")
+
+
+sel.addEventListener("click", async () => {
+  let currentMode = document.getElementById("modelType").value.toString(); 
+  if (currentMode =="imageClass"){
+      setImageVis();
+      setTextInvis();
+    }
+  else if (currentMode=="textClass"){
+    setTextVis();
+    setImageInvis();
+  }
+  else{
+    setTextInvis();
+    setImageInvis();
+  }
+
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    function: setPageBackgroundColor,
+    function: runcheck,
   });
-});
 
+})
 read.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: back,
-    args: [document.getElementById("cars").value.toString(), document.getElementById("quantity").value.toString()]
+    args: [document.getElementById("modelType").value.toString(), document.getElementById("classNum").value.toString(), document.getElementById("quantity").value.toString(), document.getElementById("maxLen").value.toString(), document.getElementById("hei").value.toString(), document.getElementById("wid").value.toString(), document.getElementById("sample").value.toString()]
   });
 });
 
@@ -64,38 +81,40 @@ report.addEventListener("click", async () => {
   chrome.tabs.create({url: "report.html"});
 });
 
-// // This function is sending information to the background service worker with an async request: we will need to do something similar
-// function setPageBackgroundColor() {
-//   chrome.storage.sync.get("color", ({ color }) => {
-//       var j  = document.getSelection()
-//     let resp2 = [2,j.toString()]
-//     chrome.runtime.sendMessage(resp2, function (response) {});
-
-//       document.getSelection().getRangeAt(0).deleteContents()
-//         let newNode = document.createElement('u');
-//         newNode.innerHTML = "Spell Check In Progress";
-//         document.getSelection().getRangeAt(0).insertNode(newNode);
-//         let resp = [0,j.toString()]
-//         chrome.runtime.sendMessage(resp, (response) => {console.log("hello wolrd "+ response.message) });
-//   });
-// }
-
-
- function back(modelType, epochs) {
-   console.log(modelType, epochs)
-    console.log("button clicked! ");
-        var j  = document.getSelection()  
-        var parsedCode = j.toString().replaceAll(" ","<space>").split("\n")
-        let resp = [0,j.toString(), modelType, epochs, parsedCode]
-      chrome.runtime.sendMessage(resp, function (response) {});
-
+ function back(modelType,classNum, epochs, maxLen, hei, wid, sample) {
+  var j  = document.getSelection()  
+  var parsedCode = j.toString()
+  console.log(parsedCode,modelType, classNum, epochs, maxLen, hei, wid,sample)
+  let inputs = [] 
+  if(modelType == "imageClass"){
+    inputs = [parsedCode, classNum, epochs,modelType, hei,wid, sample ]
   }
-  function stop() {
-    console.log("button clicked! ");
-     
-        let resp = [1,""]
-
-      chrome.runtime.sendMessage(resp, function (response) {});
-
+  else{
+    inputs = [parsedCode, classNum, epochs,modelType, maxLen, sample]
   }
+  // let resp = [0,j.toString(), modelType, epochs, parsedCode]
+chrome.runtime.sendMessage(inputs, function (response) {});
+
+}
+function stop() {     
+  let resp = [1,""]
+
+  chrome.runtime.sendMessage(resp, function (response) {});
+}
+
+function runcheck(){
+  // console.log("hello world")
+}
+function setImageVis(){
+  document.getElementById('imageC').style.display = 'block';
+}
+function setImageInvis(){
+  document.getElementById('imageC').style.display = 'none';
+}
   
+function setTextVis(){
+  document.getElementById('textC').style.display = 'block';
+}
+function setTextInvis(){
+  document.getElementById('textC').style.display = 'none';
+}

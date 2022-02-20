@@ -1,6 +1,7 @@
 // import React from "react"
 
 function Report(){
+    let report = null
 
     if (report === null){
         return (<p>Loading...</p>);
