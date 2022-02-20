@@ -1,2 +1,2 @@
 // data = '[{"emissions": "500", "duration": "30", "devices": [{"devA": "2", "devB": "4", "devC": "6"}]}]'
-data = '[{"emissions": 500, "duration": 30, "energyConsumed": 20, "devA": 2, "devB": 4, "devC": 6}]'
+data = '[{"emissions": 500, "TotalTime": 30, "energyConsumed": 20, "Tesla K80": 2, "Tesla V100-PCIE-16GB": 4, "T4": 6}]'
