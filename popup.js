@@ -6,11 +6,6 @@ let sel = document.getElementById("modelType")
 let r = ""
 let slip = " "
 
-
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
-
 chrome.runtime.onMessage.addListener( async function (response, sendResponse) {
 
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
