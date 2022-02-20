@@ -5,55 +5,118 @@
   <script type="text/javascript" src="data.json"></script>
 </head>
 
+<title>EcoTorch</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<body class="w3-light-grey"  style= "background-image: url('https://i.pinimg.com/originals/cf/e3/8d/cfe38d2d6817aa4c28856387feb4369b.jpg'); background-position: center;">
 
-<body>
+<!-- w3-content defines a container for fixed size centered content, 
+and is wrapped around the whole page content, except for the footer in this example -->
+<div class="w3-content" style="max-width:1400px " >
+<!-- Header -->
+<header class="w3-container w3-center w3-padding-32"> 
+  <h1><b>Sustainability Report</b></h1>
+  <centered>
+  <p>Welcome to your personalized Sustainability report brought to you by </p>
+</centered>
+<p><img src="https://i.imgur.com/FT4ioq6.png" style="width:500px;"></p>
 
-<div style="text-align: center;">
-  <img src="/images/274000640_1047952722421384_8159516966375962189_n.png" style ="width:25%;">
-</div>
+</header>
 
-<div style="text-align: center;">
-  <h1 style="font-size: xx-large;">Report</h1>
-  <br>
-  <p style="font-size: larger;">Power Consumption on Current Device</p>
-  <p id="emissions"></p>
+<div>
+  <!-- Blog entry -->
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container">
+      <h3><b>Reduction methodologies</b></h3>
+    </div>
 
-  <p style="font-size: larger;">Power Consumption on Alternative Devics</p>
-  <!-- <p id="emissions"></p> -->
-
-  <p style="font-size: larger;">
-    Durations (durations of one epochs * number of epochs)
-  </p>
-  <p id="duration"></p>
-
-  <!-- Placeholder for sliders to filter models/suggestions -->
-  <div class="value">0</div>
-  <input type="range" min="0" max="10" step="1" value="0" id="myRange">
-
-  <!-- <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    <div class="w3-container">
+        <li><b>Quantization:</b> At training time, we must do the resource intensive task of computing gradients, however when it comes to testing, we can get away with a less memory and storage intensive representation for our model parameters. Quantizing to INT8 or FP16 allows a model to perform much faster, expending lower energy with a minimal loss in accuracy.</li>
+        <li><b>Pruning/Sparsity:</b> If you have a hammer, every problem seems like a nail. In deep learning, we tend to use more parameters just in case they perform better, than use a lesser number of parameters and under-perform at the objective. Once we have an optimized model, we could then prune parameters that are not very important based on a heuristic to make the model faster and memory efficient.</li>
+        <br>
+        <div class="w3-row">
+        <div class="w3-col m8 s12">
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+        </div>
+      </div>
+    </div>
   </div>
+  <br>
+  <div class="w3-card-4 w3-margin w3-white">
+    <div class="w3-container">
+      <h3><b>Offset methodologies</b></h3>
+    </div>
 
-  <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-  </div> -->
+    <div class="w3-container">
+        <p>The good news is there's a lot that you can do to help!</p>
+        <li><b>Purchase carbon offsets:</b> carbon offsets are a great way to balance the emissions you create through machine learning. Helpful tools such as wren.co and goldstandard are great resources</li>
+        <li><b>Use clean energy:</b> consider switching your home or organization to more sustainable and clean methods of power</li>
+        <li><b>Run local:</b> running code locally tends to be more sustainable than running with cloud services. </li>
+        <li><b>Be more informed:</b> using tools such as ours can raise awareness of the ecological impacts of ML and motivate you to make more sustainable decisions</li>
 
+      <br> 
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+        </div>
+        <div class="w3-col m4 w3-hide-small">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div style="text-align: center; display: none;">
-  <button id="reset">
-    <div>
-      Reset
-    </div>
-  </button>
+
+<br>
+
+<div class="w3-card-4 w3-margin w3-white">
+  <div class="w3-container" style="text-align: center;">
+    <h3><b>Report</b></h3>
+  </div>
+  <br>
+
+  <div class="w3-container">
+    <div style="text-align: center;">
   
-  <!-- After the filering is done, show the final suggestion -->
-  <button>
-    <div>
-      Suggestion
+      <p style="font-size: larger;">
+        Durations (durations of one epochs * number of epochs)
+      </p>
+      <p id="duration"></p>
+      <br>
+    
+      <p style="font-size: larger;">Power Consumption on Current Device</p>
+      <p id="emissions"></p>
+      <br>
+    
+      <!-- Placeholder for sliders-->
+      <p style="font-size: larger;">Power Consumption on Alternative Devics</p>
+      <!-- <p id="emissions"></p> -->
+      <div class="value">0</div>
+      <input type="range" min="0" max="10" step="1" value="0" id="myRange">
+    
     </div>
-  </button>
+    
+    <div style="text-align: center; display: none;">
+      <button id="reset">
+        <div>
+          Reset
+        </div>
+      </button>
+      
+      <!-- After the filering is done, show the final suggestion -->
+      <button>
+        <div>
+          Suggestion
+        </div>
+      </button>
+    </div>
 </div>
+
 
 <script src="report.js"></script>
 </body>
