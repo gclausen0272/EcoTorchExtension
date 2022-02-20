@@ -1,7 +1,3 @@
-.slidecontainer {
-  width: 100%; /* Width of the outside container */
-}
-
 /* The slider itself */
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
@@ -26,13 +22,13 @@
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
+  background: #1d04aa;
   cursor: pointer; /* Cursor on hover */
 }
 
 .slider::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #04AA6D; /* Green background */
+  background: #1d04aa;
   cursor: pointer; /* Cursor on hover */
 }
