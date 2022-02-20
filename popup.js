@@ -1,10 +1,11 @@
-// Initialize butotn with users's prefered color
+// Initialize button with users's prefered color
 let changeColor = document.getElementById("changeColor");
 let read = document.getElementById("back")
 let stopTime = document.getElementById("stop")
 let sel = document.getElementById("modelType")
 let r = ""
 let slip = " "
+let report = document.getElementById("report_link")
 
 chrome.runtime.onMessage.addListener( async function (response, sendResponse) {
 
@@ -70,27 +71,32 @@ stopTime.addEventListener("click", async () => {
   });
 });
 
+report.addEventListener("click", async () => {
+  console.log("get to report")
+  chrome.tabs.create({url: "report.html"});
+});
+
  function back(modelType,classNum, epochs, maxLen, hei, wid, sample) {
-        var j  = document.getSelection()  
-        var parsedCode = j.toString()
-        console.log(parsedCode,modelType, classNum, epochs, maxLen, hei, wid,sample)
-        let inputs = [] 
-        if(modelType == "imageClass"){
-          inputs = [parsedCode, classNum, epochs,modelType, hei,wid, sample ]
-        }
-        else{
-          inputs = [parsedCode, classNum, epochs,modelType, maxLen, sample]
-        }
-        // let resp = [0,j.toString(), modelType, epochs, parsedCode]
-      chrome.runtime.sendMessage(inputs, function (response) {});
-
+  var j  = document.getSelection()  
+  var parsedCode = j.toString()
+  console.log(parsedCode,modelType, classNum, epochs, maxLen, hei, wid,sample)
+  let inputs = [] 
+  if(modelType == "imageClass"){
+    inputs = [parsedCode, classNum, epochs,modelType, hei,wid, sample ]
   }
-  function stop() {     
-        let resp = [1,""]
-
-      chrome.runtime.sendMessage(resp, function (response) {});
-
+  else{
+    inputs = [parsedCode, classNum, epochs,modelType, maxLen, sample]
   }
+  // let resp = [0,j.toString(), modelType, epochs, parsedCode]
+chrome.runtime.sendMessage(inputs, function (response) {});
+
+}
+function stop() {     
+  let resp = [1,""]
+
+  chrome.runtime.sendMessage(resp, function (response) {});
+}
+
 function runcheck(){
   // console.log("hello world")
 }
