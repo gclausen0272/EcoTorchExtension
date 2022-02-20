@@ -1,1 +1,2 @@
-data = '[{"emissions": "500", "duration": "30"}]'
+// data = '[{"emissions": "500", "duration": "30", "devices": [{"devA": "2", "devB": "4", "devC": "6"}]}]'
+data = '[{"emissions": "500", "duration": "30", "devA": "2", "devB": "4", "devC": "6"}]'

@@ -84,37 +84,32 @@ and is wrapped around the whole page content, except for the footer in this exam
     <div style="text-align: center;">
   
       <p style="font-size: larger;">
-        Durations (durations of one epochs * number of epochs)
+        Durations (durations of one epochs * number of epochs):
       </p>
       <p id="duration"></p>
       <br>
     
-      <p style="font-size: larger;">Power Consumption on Current Device</p>
+      <p style="font-size: larger;">Power Consumption on Current Device:</p>
       <p id="emissions"></p>
       <br>
     
       <!-- Placeholder for sliders-->
-      <p style="font-size: larger;">Power Consumption on Alternative Devics</p>
+      <p style="font-size: larger;">Power Consumption on Alternative Devices:</p>
       <!-- <p id="emissions"></p> -->
-      <div class="value">0</div>
-      <input type="range" min="0" max="10" step="1" value="0" id="myRange">
-    
+      <div class="value">10</div>
+      <input type="range" min="0" max="10" step="1" value="10" id="myRange" list="tickmarks">
+      <datalist id="tickmarks">
+        <option><p id="devA"></p></option>
+        <option><p id="devB"></p></option>
+        <option><p id="devC"></p></option>
+
+        <!-- <option value="3" label="devA">devA</option>
+        <option value="6" label="devA"></option>
+        <option value="9" label="devA"></option> -->
+      </datalist>
+      <br>
     </div>
     
-    <div style="text-align: center; display: none;">
-      <button id="reset">
-        <div>
-          Reset
-        </div>
-      </button>
-      
-      <!-- After the filering is done, show the final suggestion -->
-      <button>
-        <div>
-          Suggestion
-        </div>
-      </button>
-    </div>
 </div>
 
 
