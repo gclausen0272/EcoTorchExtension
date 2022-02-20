@@ -1,6 +1,3 @@
-// let suggestion = document.getElementById("suggestion");
-// let reset = document.getElementById("reset")
-
 // var elem = document.querySelector('input[type="range"]');
 var elem = document.getElementById("myRange")
 
@@ -19,11 +16,5 @@ function load_data(){
   document.getElementById("emissions").innerHTML = mydata[0].emissions
   document.getElementById("duration").innerHTML = mydata[0].duration
 }
-
-// reset.addEventListener("click", async () => {
-//   console.log("reset button")
-//   window.location.reload(true);
-// });
-
 
 window.addEventListener('load', load_data);
