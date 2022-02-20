@@ -10,6 +10,7 @@
       <br><br>
       <label for="modelType">Choose a model:</label>
       <select name="modelType" id="modelType">
+        <option value="modelClass">Choose Model Type</option>
         <option value="textClass">Text Classification</option>
         <option value="imageClass">Image Classification</option>
         <!-- <option value="tree">XGBoost</option> -->
@@ -26,7 +27,7 @@
         <br><br>
       </div>
 
-      <div id = "textC"  style="display: block;">
+      <div id = "textC"  style="display: none;">
         <br> 
         <label for="maxLen" id="maxLenLabel">Max Length: </label>
         <input type="number" id="maxLen" name="maxLen" min="1" max="1000">
