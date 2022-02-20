@@ -62,7 +62,7 @@ read.addEventListener("click", async () => {
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: back,
-    args: [document.getElementById("modelType").value.toString(), document.getElementById("classNum").value.toString(), document.getElementById("quantity").value.toString(), document.getElementById("maxLen").value.toString(), document.getElementById("hei").value.toString(), document.getElementById("wid").value.toString() ]
+    args: [document.getElementById("modelType").value.toString(), document.getElementById("classNum").value.toString(), document.getElementById("quantity").value.toString(), document.getElementById("maxLen").value.toString(), document.getElementById("hei").value.toString(), document.getElementById("wid").value.toString(), document.getElementById("sample").value.toString()]
   });
 });
 
@@ -75,16 +75,16 @@ stopTime.addEventListener("click", async () => {
   });
 });
 
- function back(modelType,classNum, epochs, maxLen, hei, wid) {
+ function back(modelType,classNum, epochs, maxLen, hei, wid, sample) {
         var j  = document.getSelection()  
         var parsedCode = j.toString()
-        console.log(parsedCode,modelType, classNum, epochs, maxLen, hei, wid)
+        console.log(parsedCode,modelType, classNum, epochs, maxLen, hei, wid,sample)
         let inputs = [] 
         if(modelType == "imageClass"){
-          inputs = [parsedCode, classNum, epochs,modelType, hei,wid ]
+          inputs = [parsedCode, classNum, epochs,modelType, hei,wid, sample ]
         }
         else{
-          inputs = [parsedCode, classNum, epochs,modelType, maxLen ]
+          inputs = [parsedCode, classNum, epochs,modelType, maxLen, sample]
         }
         // let resp = [0,j.toString(), modelType, epochs, parsedCode]
       chrome.runtime.sendMessage(inputs, function (response) {});
